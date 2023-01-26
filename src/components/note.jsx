@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 function Note(props) {
   return (
@@ -6,7 +7,7 @@ function Note(props) {
       <h1>{props.title} </h1>
       <p>{props.content}</p>
       <button id={props.id} onClick={props.onClic}>
-        DELETE
+        <DeleteOutlineIcon />
       </button>
     </div>
   );

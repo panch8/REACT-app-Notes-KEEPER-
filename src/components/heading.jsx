@@ -1,9 +1,10 @@
 import React from "react";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
 
 function Heading() {
   return (
     <header>
-      <h1>Keeper</h1>
+      <h1>Keeper {<LockOpenIcon />}</h1>
     </header>
   );
 }

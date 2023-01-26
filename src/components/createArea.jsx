@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import AddIcon from "@material-ui/icons/Add";
 
 function CreateArea(props) {
   const [noteObj, setNoteObj] = useState({ title: "", content: "" });
+  const [init, setInit] = useState(true);
+
+  function handleInitClick() {
+    setInit(!init);
+  }
 
   //done handlechange
   function handleChange(event) {
     const { name, value } = event.target;
-    // name === "title" &&
-    //   setNoteObj((prev) => ({ title: value, content: prev.content }));
-    // name === "content" &&
-    //   setNoteObj((prev) => ({ title: prev.title, content: value }));
     setNoteObj((prev) => {
       return { ...prev, [name]: value };
     });
@@ -26,6 +28,7 @@ function CreateArea(props) {
     <div>
       <form>
         <input
+          hidden={init}
           name="title"
           placeholder="Title"
           onChange={handleChange}
@@ -34,11 +37,14 @@ function CreateArea(props) {
         <textarea
           name="content"
           placeholder="Content"
-          rows="3"
+          rows={init ? "1" : "3"}
           onChange={handleChange}
           value={noteObj.content}
+          onClick={handleInitClick}
         />
-        <button onClick={addItem}>Add</button>
+        <button hidden={init} onClick={addItem}>
+          <AddIcon />
+        </button>
       </form>
     </div>
   );
